@@ -1,0 +1,25 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "org.gretty:gretty:2.2.0"
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: "org.gretty"
+
+gretty {
+    jacocoEnabled = false
+    httpPort = 8080
+    contextPath = '/'
+    servletContainer = 'tomcat8'
+    scanDirs = ['**/src/main/resources/**']
+    scanDependencies = true
+}
